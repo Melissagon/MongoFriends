@@ -1,5 +1,5 @@
 const { timeStamp } = require('console');
-const { Schema, Types } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 const reactionSchema = require('./reactions')
 const thoughtSchema = new Schema(
   {

@@ -3,12 +3,10 @@ const {
   getUsers,
   getSingleUser,
   createUser,
-} = require('../../../../../../../MongoFriends/controllers/userController');
-
-// /api/users
+} = require('../../controllers/userController');
+// Do I need to make router.routes for PUT and DELETE?
 router.route('/').get(getUsers).post(createUser);
 
-// /api/users/:userId
 router.route('/:userId').get(getSingleUser);
 
 module.exports = router;
