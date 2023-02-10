@@ -24,8 +24,6 @@ const usernames = [
   'Abdulkarem',
   'Smith',
   'Jones',
-  'Coollastname',
-  'enter_name_here',
   'Ze',
   'Zechariah',
   'Zeek',
@@ -78,23 +76,22 @@ const possibleThoughts = [
   'Keep truckin',
   'Hello world',
 ];
+
 const possibleReactions = [
   'Wow!', 
   'I cannot believe it',
   'You go girl',
   'You have got this!',
-  'I do not like it',
+  'I do not like it'
 ];
 
 // Get a random item given an array
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// Gets a random full name
 const getRandomUsername = () =>
   `${getRandomArrItem(usernames)}`;
 
 
-// Function to generate random applications that we can add to the database. Includes application tags.
 const getRandomThoughts = (int) => {
   let results = [];
   for (let i = 0; i < int; i++) {
@@ -108,7 +105,6 @@ const getRandomThoughts = (int) => {
   return results;
 };
 
-// Create the tags that will be added to each application
 const getThoughtReactions = (int) => {
   if (int === 1) {
     return getRandomArrItem(possibleReactions);
