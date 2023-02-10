@@ -1,4 +1,4 @@
-const names = [
+const usernames = [
   'Aaran',
   'Aaren',
   'Aarez',
@@ -68,82 +68,60 @@ const names = [
   'Parker',
 ];
 
-const appDescriptions = [
-  'Decision Tracker',
-  'Find My Phone',
-  'Learn Piano',
-  'Starbase Defender',
-  'Tower Defense',
-  'Monopoly Money Manager',
-  'Movie trailers',
+const possibleThoughts = [
+  'This is awesome',
+  'What should we think about?',
+  'Thoughts, thoughts, thoughts, thoughts',
+  'What else is there?',
+  'Life is good!',
+  'It is time to make a change',
+  'Keep truckin',
   'Hello world',
-  'Stupid Social Media App',
-  'Notes',
-  'Messages',
-  'Email',
-  'Compass',
-  'Firefox',
-  'Running app',
-  'Cooking app',
-  'Poker',
-  'Deliveries',
 ];
-
-const possibleTags = [
-  'html',
-  'css',
-  'javascript',
-  'typescript',
-  'go',
-  'cpp',
-  'python',
-  'rust',
-  'React',
-  'React Native',
-  'NextJS',
-  'Tailwind',
-  'Vue',
-  'mongodb',
-  'sql',
+const possibleReactions = [
+  'Wow!', 
+  'I cannot believe it',
+  'You go girl',
+  'You have got this!',
+  'I do not like it',
 ];
-
-const users = [];
 
 // Get a random item given an array
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Gets a random full name
-const getRandomName = () =>
-  `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
+const getRandomUsername = () =>
+  `${getRandomArrItem(usernames)}`;
+
 
 // Function to generate random applications that we can add to the database. Includes application tags.
-const getRandomApplications = (int) => {
+const getRandomThoughts = (int) => {
   let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
       published: Math.random() < 0.5,
-      description: getRandomArrItem(appDescriptions),
+      description: getRandomArrItem(possibleThoughts),
       buildSuccess: Math.random() < 0.5,
-      tags: [...getApplicationTags(3)],
+      reactions: [...getThoughtReactions(3)],
     });
   }
   return results;
 };
 
 // Create the tags that will be added to each application
-const getApplicationTags = (int) => {
+const getThoughtReactions = (int) => {
   if (int === 1) {
-    return getRandomArrItem(possibleTags);
+    return getRandomArrItem(possibleReactions);
   }
   const results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      tagBody: getRandomArrItem(possibleTags),
-      username: getRandomName(),
+      reactionBody: getRandomArrItem(possibleReactions),
+      username: getRandomUsername(),
     });
   }
   return results;
 };
 
 // Export the functions for use in seed.js
-module.exports = { getRandomName, getRandomApplications };
+module.exports = { getRandomUsername, getRandomThoughts };
