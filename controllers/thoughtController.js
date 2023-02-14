@@ -20,9 +20,10 @@ module.exports = {
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
+        console.log(thought)
         return User.findOneAndUpdate(
           { _id: req.body.userId },
-          { $addToSet: { thoughts: thought.thoughtText } },
+          { $push: { thoughts: thought._id } },
           { new: true }
         );
       })
@@ -77,7 +78,7 @@ module.exports = {
   addReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $addToSet: { reactions: req.body } },
+      { $push: { reactions: req.body } },
       { runValidators: true, new: true }
     )
       .then((thought) =>
